@@ -37,12 +37,19 @@ getId('add-dish').addEventListener('click', _ => {
 
 if (userData.mealInformation) {
   userData.mealInformation.forEach(meal => {
-    getId('mealDishPanel').innerHTML += `<button class="mealDishButton">${meal.name}<span class="material-icons forward-button">arrow_forward_ios</span></button>`
+    getId('mealDishPanel').innerHTML += `
+      <button class="mealDishButton">
+        <span class = "mealDishButtonText">${meal.name} </span>
+        <span class="material-icons forward-button">arrow_forward_ios</span>
+        <label class = "toggle">
+          <input type = "checkbox" class = "checkbox" />
+          <span class = "slider round"></span>
+        </label>
+      </button>
+      `
   });
 
   const meals = document.querySelectorAll('.mealDishButton');
-
-  console.log(meals.length);
 
   meals.forEach(meal => {
     meal.addEventListener('click', e => {

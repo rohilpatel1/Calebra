@@ -16,9 +16,15 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+.ingredientPanelBed::-webkit-scrollbar {
+  display: none;
+}
+
 #title {
+  display: block;
   text-align: center;
   font-size: 40px;
+  font-weight: bold;
 }
 
 #title2 {
@@ -42,7 +48,7 @@ body::-webkit-scrollbar {
   border-radius: 24px;
   border: none;
   background: rgb(7, 177, 149);
-
+  color: black;
   transition: 0.4s;
 }
 
@@ -86,29 +92,40 @@ body::-webkit-scrollbar {
 }
 
 .mealDishPanel {
-  width: 90%;
-  height: 85vh;
-  margin: auto;
-}
-
-.mealDishButton {
-  display: block;
-  background: rgb(58, 58, 58);
-  color: white;
   width: 100%;
-  padding: 20px;
-  font-size: 18px !important;
-  margin-bottom: 12px;
-  border: none;
-  border-radius: 10px;
-  transition: 0.4s;
+  height: 85vh;
   margin-left: auto;
   margin-right: auto;
 }
 
+.mealDishButton {
+  display: inline-block;
+  background: rgb(58, 58, 58);
+  color: white;
+  width: 90%;
+  padding: 20px;
+  text-align: left;
+  font-size: 18px !important;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 16px;
+  transition: 0.4s;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  vertical-align: middle !important;
+}
+
 .mealDishButton:hover {
   background:rgb(7, 177, 149);
+  /* background: rgb(32, 164, 235); */
   color: black;
+}
+
+.mealDishButtonText, .forward-button {
+  display: inline-block;
+  position: relative;
+  top: 5px; 
 }
 
 .forward-button {
@@ -183,6 +200,15 @@ body::-webkit-scrollbar {
   width: 100%;
 }
 
+::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
+}
+
+.ingredientPanelBed {
+  overflow-y: scroll;
+  height: 65vh;
+}
+
 .remove-ingredient-button {
   vertical-align: middle;
   margin-left: 10px;
@@ -191,4 +217,72 @@ body::-webkit-scrollbar {
 
 .remove-ingredient-button:hover {
   color: rgb(247, 75, 75);
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  float: right;
+  width: 60px;
+  height: 32px;
+  margin-left: 400px;
+  vertical-align: middle;
+  margin-left: auto;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border: none;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  /* background-color: rgb(7, 177, 149); */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* border: 0.5px solid rgb(52, 52, 52); */
+  background-color: rgb(32, 164, 235);
+}
+
+input:focus + .slider {
+  /* box-shadow: 0 0 1px rgb(7, 177, 149); */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

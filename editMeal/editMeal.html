@@ -18,12 +18,10 @@
 </head>
 <body>
   <h1 id = "title2">Edit Meal</h1>
-  <input type="text" id="food-name" placeholder="Food Name">
-  
-  <div id = "ingredientPanel" class="ingredientPanel">
-    <!-- <input type="text" class="ingredient">
-    <input type="text" class="store-location">
-    <span class="remove-ingredient-button material-icons">close</span> -->
+  <div class="ingredientPanelBed">
+    <input type="text" id="food-name" placeholder="Food Name">
+    <div id = "ingredientPanel" class="ingredientPanel"></div>
+    <button id = "addIngredient" class="addIngredient">Add Ingredient</button>
   </div>
 
   <div class="footer">
@@ -35,7 +33,7 @@
     </div>
   </div>
 
-  <button id = "addIngredient" class="addIngredient">Add Ingredient</button>
+
   <button class="main-button" id = "save-meal">Save Meal</button>
   <script src = "/script.js"></script>
   <script src = "editMeal.js"></script>

@@ -43,7 +43,8 @@ getId("save-meal").addEventListener('click', _ => {
   if (getId('food-name').value == "") return alert('Please fill out the name of your food')
   let meal = { name: getId('food-name').value, ingredients: []}
   
-  for (let i in ingredients) {
+  // for (let i in ingredients) {
+  for (const i of ingredients.keys()) {
     if ((ingredients[i].value != "") && (stores[i].value != "")) {
       meal.ingredients.push({
         ingredient: ingredients[i].value, 
