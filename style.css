@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito&family=Roboto&display=swap');
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: Roboto;
+  background: rgb(1, 14, 27);
+  color: white;
+  scroll-padding-top: 0;
+  margin: 0;
+  padding: 0;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#title {
+  text-align: center;
+  font-size: 40px;
+}
+
+#title2 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.main-button {
+  font-family: Nunito;
+  display: block; 
+  position: fixed;
+  bottom: 70px;
+  left: 0;
+  right: 0;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin-top: calc(90vh - 80px); */
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 24px;
+  border: none;
+  background: rgb(7, 177, 149);
+
+  transition: 0.4s;
+}
+
+.main-button:hover {
+  width: 70%;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(1, 14, 27);
+  color: white;
+  text-align: center !important;
+  box-shadow:  3px 3px 2px #020202, -3px -3px 49px #212121;
+  padding: 6px;
+}
+
+.smallInfoBox {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  text-align: center;
+  font-family: Nunito;
+  background:rgb(43, 43, 43);
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.footer .material-icons {
+  margin-left: 8vw;
+  margin-right: 8vw;
+  transition: 0.4s;
+}
+
+.footer .material-icons:hover {
+  font-size: 30px;
+  color:rgb(7, 177, 149)
+}
+
+.mealDishPanel {
+  width: 90%;
+  height: 85vh;
+  margin: auto;
+}
+
+.mealDishButton {
+  display: block;
+  background: rgb(58, 58, 58);
+  color: white;
+  width: 100%;
+  padding: 20px;
+  font-size: 18px !important;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 10px;
+  transition: 0.4s;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mealDishButton:hover {
+  background:rgb(7, 177, 149);
+  color: black;
+}
+
+.forward-button {
+  font-size: 16px !important;
+  vertical-align: middle;
+}
+
+#translucent {
+  display: block; 
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background: rgba(1, 14, 27, 0.5);
+  padding: 80px;
+}
+
+#food-name {
+  display: block;
+  width: 80%;
+  margin: auto;
+  background: rgb(52, 52, 52);
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-family: Nunito;
+}
+
+.addIngredient {
+  display: block;
+  background:rgb(32, 164, 235);
+  border: none;
+  border-radius: 8px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 18px;
+  padding-right: 18px;
+  font-size: 14px;
+  font-family: Nunito;
+  margin-top: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
+
+.ingredient, .store-location {
+  width: 30%;
+  margin-top: 10px;
+  font-size: 12px;
+  padding: 8px;
+  background:rgb(52, 52, 52);
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  font-family: Nunito;
+  color: white;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.ingredient:focus, .store-location:focus {
+  color: white;
+}
+
+.ingredientPanel {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4px;
+  text-align: center;
+  width: 100%;
+}
+
+.remove-ingredient-button {
+  vertical-align: middle;
+  margin-left: 10px;
+  transition: 0.4s;
+}
+
+.remove-ingredient-button:hover {
+  color: rgb(247, 75, 75);
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- ios support -->
+  <link rel="apple-touch-icon" href="images/icon-192x192.png" />
+  <link rel="apple-touch-icon" href="images/icon-256x256.png" />
+  <link rel="apple-touch-icon" href="images/icon-384x384.png" />
+  <link rel="apple-touch-icon" href="images/icon-512x512.png" />
+  <meta name="apple-mobile-web-app-status-bar" content="#266bd7" />
+  <meta name="theme-color" content="#266bd7" />
+  <title>Calebra</title>
+</head>
+<body>
+  <h1 id = "title2">Create Meal</h1>
+  <input type="text" id="food-name" placeholder="Food Name">
+  
+  <div id = "ingredientPanel" class="ingredientPanel">
+    <!-- <input type="text" class="ingredient">
+    <input type="text" class="store-location">
+    <span class="remove-ingredient-button material-icons">close</span> -->
+  </div>
+
+  <div class="footer">
+    <div class="footer-icons">
+      <span class = "material-icons" id = "footer-home">home</span>
+      <span class = "material-icons" id = "footer-shopping-list">event_note</span>
+      <span class = "material-icons" id = "footer-meal-menu">lunch_dining</span>
+      <span class = "material-icons" id = "footer-settings">settings</span>
+    </div>
+  </div>
+
+  <button id = "addIngredient" class="addIngredient">Add Ingredient</button>
+  <button class="main-button" id = "save-meal">Save Meal</button>
+  <script src = "/script.js"></script>
+  <script src = "createMeal.js"></script>
+</body>
+</html>
