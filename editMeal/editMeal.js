@@ -1,3 +1,7 @@
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 getId("addIngredient").addEventListener('click', _ => {
   const nodeWrapper = document.createElement('div');
   nodeWrapper.setAttribute('class', 'row');
@@ -96,8 +100,8 @@ getId("save-meal").addEventListener('click', _ => {
   for (const i of ingredients.keys()) {
     if ((ingredients[i].value != "") && (stores[i].value != "")) {
       ingreds.push({
-        ingredient: ingredients[i].value, 
-        storeName: stores[i].value
+        ingredient: capitalizeFirstLetter(ingredients[i].value), 
+        storeName: capitalizeFirstLetter(stores[i].value)
       });
     } else return alert("Please fill out all ingredients!");
   }

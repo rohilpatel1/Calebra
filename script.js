@@ -39,8 +39,7 @@ if (userData.mealInformation) {
   userData.mealInformation.forEach(meal => {
     getId('mealDishPanel').innerHTML += `
       <button class="mealDishButton">
-        <span class = "mealDishButtonText">${meal.name} </span>
-        <span class="material-icons forward-button">arrow_forward_ios</span>
+        <span class = "mealDishButtonText">${meal.name}</span>
         <label class = "toggle">
           <input type = "checkbox" class = "checkbox" />
           <span class = "slider round"></span>

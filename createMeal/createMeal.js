@@ -1,4 +1,6 @@
-let id = 0;
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 getId("addIngredient").addEventListener('click', _ => {
   const nodeWrapper = document.createElement('div');
@@ -16,7 +18,7 @@ getId("addIngredient").addEventListener('click', _ => {
   const node3 = document.createElement('span');
   node3.classList.add('material-icons');
   node3.classList.add('remove-ingredient-button');
-  node3.setAttribute('id', `button_${id}`);
+
   const node3Text = document.createTextNode('close');
   node3.appendChild(node3Text);
 
@@ -47,8 +49,8 @@ getId("save-meal").addEventListener('click', _ => {
   for (const i of ingredients.keys()) {
     if ((ingredients[i].value != "") && (stores[i].value != "")) {
       meal.ingredients.push({
-        ingredient: ingredients[i].value, 
-        storeName: stores[i].value
+        ingredient: capitalizeFirstLetter(ingredients[i].value), 
+        storeName: capitalizeFirstLetter(stores[i].value)
       });
     } else return alert("Please fill out all ingredients!");
   }

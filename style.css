@@ -99,7 +99,7 @@ body::-webkit-scrollbar {
 }
 
 .mealDishButton {
-  display: inline-block;
+  display: block;
   background: rgb(58, 58, 58);
   color: white;
   width: 90%;
@@ -114,6 +114,7 @@ body::-webkit-scrollbar {
   margin-right: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   vertical-align: middle !important;
+  font-family: Nunito;
 }
 
 .mealDishButton:hover {
@@ -125,12 +126,14 @@ body::-webkit-scrollbar {
 .mealDishButtonText, .forward-button {
   display: inline-block;
   position: relative;
-  top: 5px; 
+  top: 6px; 
 }
 
 .forward-button {
   font-size: 16px !important;
   vertical-align: middle;
+  position: fixed;
+  z-index: 100;
 }
 
 #translucent {
@@ -206,7 +209,7 @@ body::-webkit-scrollbar {
 
 .ingredientPanelBed {
   overflow-y: scroll;
-  height: 65vh;
+  height: 70vh;
 }
 
 .remove-ingredient-button {
@@ -257,8 +260,8 @@ body::-webkit-scrollbar {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: .2s;
+  transition: .2s;
 }
 
 input:checked + .slider {
