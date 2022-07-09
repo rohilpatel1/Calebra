@@ -43,7 +43,7 @@ getId("save-meal").addEventListener('click', _ => {
   const ingredients = document.querySelectorAll('.ingredient');
   const stores = document.querySelectorAll('.store-location');
   if (getId('food-name').value == "") return alert('Please fill out the name of your food')
-  let meal = { name: getId('food-name').value, ingredients: []}
+  let meal = { name: getId('food-name').value, ingredients: [], addedToShoppingList: false }
   
   // for (let i in ingredients) {
   for (const i of ingredients.keys()) {
