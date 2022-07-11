@@ -1,8 +1,20 @@
-//let uData = JSON.parse(localStorage.getItem('data')) || {};
-
 let everyIngredientArray = [];
 let compiledIngredientArray = [];
 let cleanIngredientArray = [];
+
+// let tags = {
+// 	'&': '&amp',
+// 	'<': '&lt',
+// 	'>': '&gt'
+// };
+
+function replaceTag(tag) {
+	return tags[tag] || tag;
+}
+
+function escapeTags(str, tag) {
+	return str.replace(/[&<>]/g, replaceTag);
+}
 
 userData.mealInformation.forEach(meal => {
   if (!meal.addedToShoppingList) return;
@@ -17,7 +29,6 @@ everyIngredientArray.forEach(ingredient => {
   for (const checkIngredient of everyIngredientArray) {
     if (JSON.stringify(ingredient) == JSON.stringify(checkIngredient)) count++;
   }
-  //count should never be 0
 
   compiledIngredientArray.push({
     ingredientName: ingredient.ingredient,
@@ -30,5 +41,11 @@ uniqueArray = a => [...new Set(a.map(o => JSON.stringify(o)))].map(s => JSON.par
 cleanIngredientArray = uniqueArray(compiledIngredientArray);
 
 cleanIngredientArray.forEach(element => {
-  getId('list-box').innerHTML += `<p>${element.ingredientCount} ${element.ingredientName} from ${element.ingredientStore}</p>`
+  getId('meal-ingredients').innerHTML += `
+  <tr>
+    <td>${escapeTags(element.ingredientName)}</td>
+    <td>${escapeTags(element.ingredientStore)}</td>
+    <td>${element.ingredientCount}</td>
+  </tr>
+  `
 });

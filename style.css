@@ -289,3 +289,85 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+#meal-ingredients {
+  margin: auto;
+  width: 90%;
+  text-align: center;
+  font-family: Nunito;
+  border-collapse: collapse;
+}
+
+#meal-ingredients th{
+  font-size: 18px;
+  font-family: Montserrat;
+  padding: 8px;
+}
+
+#meal-ingredients tr {
+  border-bottom: 1px solid rgb(108, 108, 108);
+  transition: 0.4s;
+  border-radius: 4px;
+}
+
+#meal-ingredients tr:hover {
+  background:rgb(7, 177, 149);
+  color: black;
+}
+
+#meal-ingredients td {
+  padding: 8px;
+}
+
+#deleteMeal {
+  display: block;
+  color: red;
+  background: transparent;
+  border: none;
+  padding: 4px;
+  margin: auto;
+  margin-top: 24px;
+  font-size: 16px;
+  font-family: Nunito;
+}
+
+.settings-button {
+  display: block;
+  width: 95%;
+  margin: auto;
+  background:rgb(58, 58, 58);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.settings-button:hover {
+  background:rgb(7, 177, 149);
+  color: black;
+}
+
+#update-screen {
+  width: 60%;
+  background:rgb(58, 58, 58);
+  margin: auto;
+  padding: 18px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+#updateButton {
+  background:rgb(32, 164, 235);
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  margin-top: 18px;
+  vertical-align: middle;
+}
+
+#refresh {
+  vertical-align: middle;
+  font-size: 17px;
+}

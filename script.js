@@ -2,41 +2,73 @@ let userData = JSON.parse(localStorage.getItem('data')) || {
   mealInformation: []
 };
 
-// if (!userData) {
-//   userData = {
-//     mealInformation: []
-//   }
-// } 
+let tags = {
+	'&': '&amp',
+	'<': '&lt',
+	'>': '&gt'
+};
 
-//getId('')
+function replaceTag(tag) {
+	return tags[tag] || tag;
+}
+
+function escapeTags(str, tag) {
+	return str.replace(/[&<>]/g, replaceTag);
+}
+
+let newWorker;
+if (!localStorage.getItem('updateAvailable')) localStorage.setItem('updateAvailable', '0');
+
+if(getId('updateButton')) getId('updateButton').addEventListener('click', _ => {
+  newWorker.postMessage({ action: 'skipWaiting' });
+  localStorage.setItem('updateAvailable', '0');
+});
 
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", async _ => {
-    const res = await navigator.serviceWorker
-      .register("/serviceWorker.js").catch(err => console.log("service worker not registered", err));
+  window.addEventListener("load", _ => {
+    navigator.serviceWorker.register('/serviceWorker.js').then(reg => {
+    }).catch(console.log)
+  });
 
-    if (res) console.log("Service Worker connected to the application")
+  let refreshing;
+
+  navigator.serviceWorker.addEventListener('controllerchange', _ => {
+    if (refreshing) return;
+
+    location.reload();
+
+    refreshing = true;
   });
 }
 
+//if (getId('newUpdateBox')) getId('newUpdateBox').style.display = "block";
+
 function getId(id) {
-  return document.getElementById(id);
+  if (document.getElementById(id)) {
+    return document.getElementById(id);
+  }
 }
 
-if (getId('footer-meal-menu')) getId('footer-meal-menu').addEventListener('click', _ => {
+getId('footer-meal-menu').addEventListener('click', _ => {
   location.href = "/mealMenu.html";
 });
 
-if (getId('footer-home')) getId('footer-home').addEventListener('click', _ => {
+getId('footer-home').addEventListener('click', _ => {
   location.href = "/";
 });
 
-if (getId('add-dish')) getId('add-dish').addEventListener('click', _ => {
-  location.href = "/createMeal/createMeal.html";
+if (getId('add-dish')) {
+  getId('add-dish').addEventListener('click', _ => {
+    location.href = "/createMeal/createMeal.html";
+  });
+}
+
+getId('footer-shopping-list').addEventListener('click', _ => {
+  location.href = "/viewList/viewList.html";
 });
 
-if (getId('footer-shopping-list')) getId('footer-shopping-list').addEventListener('click', _ => {
-  location.href = "/viewList/viewList.html";
+getId('footer-settings').addEventListener('click', _ => {
+  location.href = "/settings/settings.html";
 });
 
 if (userData.mealInformation) {
@@ -46,7 +78,7 @@ if (userData.mealInformation) {
 
     if (getId('mealDishPanel')) getId('mealDishPanel').innerHTML += `
       <button class="mealDishButton">
-        <span class = "mealDishButtonText">${meal.name}</span>
+        <span class = "mealDishButtonText">${escapeTags(meal.name)}</span>
         <label class = "toggle">
           <input type = "checkbox" class = "checkbox" ${checked}/>
           <span class = "slider round"></span>
@@ -59,8 +91,7 @@ if (userData.mealInformation) {
 
   meals.forEach(meal => {
     meal.addEventListener('click', e => {
-      let mealClicked = userData.mealInformation.find(a => a.name == e.target.innerText);
-
+      let mealClicked = userData.mealInformation.find(a => a.name == e.target.innerText.trim());
       if (mealClicked)  {
         localStorage.setItem('mealClicked', JSON.stringify(mealClicked));
         location.href = "/editMeal/editMeal.html";
@@ -70,15 +101,16 @@ if (userData.mealInformation) {
 }
 
 document.querySelectorAll('.checkbox').forEach(checkbox => {
-  checkbox.addEventListener('click', e => {
-    let mealTargetted = userData.mealInformation.find(a => a.name == e.target.parentNode.parentNode.innerText).addedToShoppingList;
+  checkbox.addEventListener('change', e => {
+    console.log(e.target.parentNode.parentNode.innerText.trim())
+    let mealTargetted = userData.mealInformation.find(a => a.name == e.target.parentNode.parentNode.innerText.trim()).addedToShoppingList;
 
     if (mealTargetted) {
-      userData.mealInformation.find(a => a.name == e.target.parentNode.parentNode.innerText).addedToShoppingList = false;
+      userData.mealInformation.find(a => a.name == e.target.parentNode.parentNode.innerText.trim()).addedToShoppingList = false;
       localStorage.setItem('data', JSON.stringify(userData));
     }
     else {
-      userData.mealInformation.find(a => a.name == e.target.parentNode.parentNode.innerText).addedToShoppingList = true;
+      userData.mealInformation.find(a => a.name == e.target.parentNode.parentNode.innerText.trim()).addedToShoppingList = true;
       localStorage.setItem('data', JSON.stringify(userData));
     }
   });

@@ -37,8 +37,6 @@ getId("addIngredient").addEventListener('click', _ => {
       e.target.parentNode.remove();
     }
   }
-
-  id++;
 });
 
 let mealClickedStorage = JSON.parse(localStorage.getItem('mealClicked'));
@@ -106,9 +104,23 @@ getId("save-meal").addEventListener('click', _ => {
     } else return alert("Please fill out all ingredients!");
   }
 
-  userData.mealInformation.find(a => a.name == mealClickedStorage.name).ingredients = ingreds;
-  userData.mealInformation.find(a => a.name == mealClickedStorage.name).name = getId('food-name').value;
+  userData.mealInformation.find(a => a.name == mealClickedStorage.name.trim()).ingredients = ingreds;
+  userData.mealInformation.find(a => a.name == mealClickedStorage.name.trim()).name = getId('food-name').value;
 
   localStorage.setItem('data', JSON.stringify(userData));
   location.href = "/mealMenu.html";
+});
+
+getId('deleteMeal').addEventListener('click', _ => {
+  let message = "Are you sure you want to delete this meal?";
+
+  if (confirm(message) == true) {
+    const index = userData.mealInformation.map(object => object.name.trim()).indexOf(mealClickedStorage.name.trim());
+
+    if (index > -1) {
+      userData.mealInformation.splice(index, 1);
+      localStorage.setItem('data', JSON.stringify(userData));
+      location.href = "/mealMenu.html";
+    } else return;
+  } else return;
 });
